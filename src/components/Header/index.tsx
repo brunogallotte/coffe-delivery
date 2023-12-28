@@ -6,7 +6,7 @@ import iconCart from '../../assets/icons/CartIcon.svg'
 
 export function Header() {
     return(
-        <HeaderContainer>
+        <HeaderContainer className="container">
             <img src={logoCoffe} />
             <div className="wrapper">
                 <BoxInfo><img src={iconMap} />Porto Alegre, RS</BoxInfo>
