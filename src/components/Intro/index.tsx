@@ -11,7 +11,7 @@ export function Intro() {
         <IntroContainer>
             <div className="container flex">
                 <IntroContent>
-                    <strong className="title">Encontre o café perfeito para qualquer hora do dia</strong>
+                    <h1 className="title">Encontre o café perfeito para qualquer hora do dia</h1>
                     <p className="description">Com o Coffe Delivery você recebe seu café onde estiver, a qualquer hora</p>
                     <div className="wrapper">
                         <div className="spanContainer">

@@ -97,6 +97,7 @@ export const IntroContent = styled.div`
 
     .title {
         font-family: 'Baloo 2', sans-serif;
+        margin-bottom: 1rem;
         font-weight: 800;
         line-height: 130%;
         font-size: 3rem;
