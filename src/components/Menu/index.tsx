@@ -9,7 +9,7 @@ export function Menu() {
             <MenuGrid>
                 {coffes.map(coffe => {
                     return(
-                        <Card key={coffe.id} id={coffe.id} tag={coffe.tag} title={coffe.title} description={coffe.description} price={coffe.price} quantity={coffe.quantity} />
+                        <Card key={coffe.id} id={coffe.id} imgUrl={coffe.imgUrl} tag={coffe.tag} title={coffe.title} description={coffe.description} price={coffe.price} quantity={coffe.quantity} />
                     )
                 })}
                 

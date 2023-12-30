@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const MenuContainer = styled.div`
+    padding-bottom: 157px;
+
     h2 {
         font-family: 'Baloo 2', sans-serif;
         font-size: 2rem;

@@ -7,7 +7,6 @@ export const CartContainer = styled.div`
     align-items: center;
     gap: 1rem;
     font-family: 'Baloo 2', sans-serif;
-    width: 256px;
     padding: 1rem;
     background: ${props=> props.theme.baseCard};
     border-radius: 6px 36px;
@@ -23,9 +22,16 @@ export const CartContainer = styled.div`
         font-size: 0.625rem;
         font-weight: bold;
         line-height: 130%;
-        padding: 4px 8px;
+        padding: 0.25rem 0.5rem;
         border-radius: 100px;
         text-transform: uppercase;
+    }
+
+    .tagContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
     }
 
     .title {
@@ -47,13 +53,19 @@ export const CartFooter = styled.footer`
     display: flex;
     width: 100%;
     justify-content: space-between;
-    padding: 0px 4px;;
+    padding: 0px 0.25rem;
 
     .price {
-        font-family: Baloo 2;
+        font-family: Baloo 2, 'sans-serif';
         font-size: 1.5rem;
         font-weight: 800;
         color: ${props=> props.theme.baseText};
+    }
+
+    .reais {
+        font-family: Roboto, 'sans-serif';
+        font-weight: normal;
+        font-size: 0.875rem;
     }
 
     .cartIcon {
@@ -62,13 +74,12 @@ export const CartFooter = styled.footer`
         padding: 0.5rem;
         background: ${props=> props.theme.purpleDark};
         border-radius: 6px;
+        cursor: pointer;
     }
 
     .wrapper {
         display: flex;
         align-items: center;
-        width: 118px;
-        height: 38px;
         gap: 0.5rem;
     }
 
@@ -76,15 +87,16 @@ export const CartFooter = styled.footer`
         display: flex;
         align-items: center;
         justify-content: space-around;
-        width: 72px;
+        width: 4.5rem;
         gap: 0.25rem;
         padding: 0.5rem;
         background: ${props=>props.theme.baseButton};
         border-radius: 6px;
 
         img {
-            width: 14px;
-            height: 14px;
+            width: 0.875rem;
+            height: 0.875rem;
+            cursor: pointer;
         }
     }
 `
