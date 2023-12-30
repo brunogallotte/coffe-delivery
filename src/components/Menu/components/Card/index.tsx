@@ -4,20 +4,21 @@ import coffeImg from '../../../../assets/images/coffes/expresso.png'
 import cartIcon from '../../../../assets/icons/CartIcon2.svg'
 import moreIcon from '../../../../assets/icons/mais.svg'
 import lessIcon from '../../../../assets/icons/menos.svg'
+import { CoffeProps } from '../../../../data/menuCoffe'
 
-export function Card(){
+export function Card({ tag, title, description, price, quantity }: CoffeProps){
     return(
         <CartContainer>
             <img className="coffeImg" src={coffeImg} />
             <span className="tag">Tradicional</span>
-            <strong className="title">Expresso Tradicional</strong>
-            <p>O tradicional café feito com água quente e grãos moídos</p>
+            <strong className="title">{title}</strong>
+            <p>{description}</p>
             <CartFooter>
-                <span className="price">R$ 9,90</span>
+                <span className="price">R$ {price}</span>
                 <div className="wrapper">
                     <div className="counterBox">
                         <img src={lessIcon} />
-                        1
+                        {quantity}
                         <img src={moreIcon} />
                     </div>
                     <img className="cartIcon" src={cartIcon} />

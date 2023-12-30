@@ -9,3 +9,9 @@ export const MenuContainer = styled.div`
         margin-bottom: 3.375rem;
     }
 `
+
+export const MenuGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+`
