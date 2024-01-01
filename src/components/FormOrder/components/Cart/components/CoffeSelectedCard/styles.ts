@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const CoffeSelectedCardContainer = styled.div`
     display: flex;
     align-items: flex-start;
+    padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid ${props=> props.theme.baseButton};
     gap: 20px;
@@ -30,6 +31,12 @@ export const RemoveButton = styled.div`
     border-radius: 6px;
     color: ${props=> props.theme.baseText};
     background: ${props=> props.theme.baseButton};
+    transition: .2s background;
+    cursor: pointer;
+
+    &:hover {
+        background: ${props => props.theme.baseHover};
+    }
 `
 
 export const CoffeSelectedCardActions = styled.div`

@@ -1,12 +1,13 @@
 import { CoffeSelectedCard } from "./components/CoffeSelectedCard";
-import { FooterContainer } from "./components/Footer/styles";
+import { Footer } from "./components/Footer";
 import { CartContainer } from "./styles";
 
 export function Cart() {
     return(
         <CartContainer>
             <CoffeSelectedCard />
-            <FooterContainer />
+            <CoffeSelectedCard />
+            <Footer />
         </CartContainer>
     )
 }

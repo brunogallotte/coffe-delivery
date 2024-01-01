@@ -13,7 +13,7 @@ export const defaultTheme = {
     baseSubtitle: '#403937',
     baseTitle: '#272221',
 
-    white: '#fffff',
+    white: '#ffff',
     background: '#fafafa',
     baseCard: '#f3f2f2',
     baseInput: '#EDEDED',
