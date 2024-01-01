@@ -1,9 +1,9 @@
 import { CartContainer, CartFooter } from './styles'
 
 import cartIcon from '../../../../assets/icons/CartIcon2.svg'
-import moreIcon from '../../../../assets/icons/mais.svg'
-import lessIcon from '../../../../assets/icons/menos.svg'
+
 import { CoffeProps } from '../../../../@types/style'
+import { Counter } from '../../../Counter'
 
 
 export function Card({ imgUrl, tag, title, description, price, quantity }: CoffeProps){
@@ -20,11 +20,7 @@ export function Card({ imgUrl, tag, title, description, price, quantity }: Coffe
             <CartFooter>
                 <span className="price"><span className="reais">R$</span> {price}</span>
                 <div className="wrapper">
-                    <div className="counterBox">
-                        <img src={lessIcon} />
-                        {quantity}
-                        <img src={moreIcon} />
-                    </div>
+                    <Counter counter={quantity} />
                     <img className="cartIcon" src={cartIcon} />
                 </div>
             </CartFooter>

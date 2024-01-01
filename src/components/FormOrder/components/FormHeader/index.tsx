@@ -1,15 +1,19 @@
 import { FormHeaderWrapper } from "./styles";
 
-import iconForm from '../../../../assets/icons/IconForm.svg'
+interface FormHeaderProps {
+    icon: string
+    title: string
+    description: string
+}
 
-export function FormHeader(){
+export function FormHeader({ icon, title, description }: FormHeaderProps){
     return(
         <FormHeaderWrapper>
             <div className="headerContent">
-                <img src={iconForm} className="icon"/>
+                <img src={icon} className="icon"/>
                 <div>
-                    <strong className="title">Endereço de entrega</strong>
-                    <p className="description">Informe o endereço onde deseja receber seu pedido</p>
+                    <strong className="title">{title}</strong>
+                    <p className="description">{description}</p>
                 </div>
             </div>
         </FormHeaderWrapper>
