@@ -3,15 +3,17 @@ import lessIcon from '../../assets/icons/menos.svg'
 import { CounterContainer } from './styles'
 
 interface CounterProps {
-    counter: number
+    quantityCounter: number
+    handleAddQuantityCounter: () => void
+    handleLessQuantityCounter: () => void
 }
 
-export function Counter({ counter }: CounterProps) {
+export function Counter({ quantityCounter, handleAddQuantityCounter, handleLessQuantityCounter }: CounterProps) {
     return(
         <CounterContainer className="counterBox">
-            <img src={lessIcon} />
-            {counter}
-            <img src={moreIcon} />
+            <img src={lessIcon} onClick={handleLessQuantityCounter} />
+            {quantityCounter}
+            <img src={moreIcon} onClick={handleAddQuantityCounter} />
         </CounterContainer>
     )
 }

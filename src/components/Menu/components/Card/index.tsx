@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { CartContainer, CartFooter } from './styles'
 
 import cartIcon from '../../../../assets/icons/CartIcon2.svg'
@@ -6,7 +8,25 @@ import { CoffeProps } from '../../../../@types/style'
 import { Counter } from '../../../Counter'
 
 
-export function Card({ imgUrl, tag, title, description, price, quantity }: CoffeProps){
+export function Card({ imgUrl, tag, title, description, price }: CoffeProps){
+    const [quantityCounter, setQuantityCounter] = useState(0)
+
+    function handleAddQuantityCounter() {
+        const currentQuantity = quantityCounter
+        const updatedQuantity = currentQuantity + 1
+
+        setQuantityCounter(updatedQuantity)
+    }
+
+    function handleLessQuantityCounter() {
+        if (quantityCounter > 0) {
+            const currentQuantity = quantityCounter
+            const updatedQuantity = currentQuantity -1
+
+            setQuantityCounter(updatedQuantity)
+        }
+    }
+    
     return(
         <CartContainer>
             <img className="coffeImg" src={imgUrl} />
@@ -20,7 +40,7 @@ export function Card({ imgUrl, tag, title, description, price, quantity }: Coffe
             <CartFooter>
                 <span className="price"><span className="reais">R$</span> {price}</span>
                 <div className="wrapper">
-                    <Counter counter={quantity} />
+                    <Counter quantityCounter={quantityCounter} handleAddQuantityCounter={handleAddQuantityCounter} handleLessQuantityCounter={handleLessQuantityCounter}/>
                     <img className="cartIcon" src={cartIcon} />
                 </div>
             </CartFooter>
