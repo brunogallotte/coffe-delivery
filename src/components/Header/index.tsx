@@ -10,7 +10,11 @@ export function Header() {
             <img src={logoCoffe} />
             <div className="wrapper">
                 <BoxInfo><img src={iconMap} />Porto Alegre, RS</BoxInfo>
-                <CartInfo><img src={iconCart} /></CartInfo>
+                <CartInfo>
+                    <img src={iconCart}>
+                    </img>
+                    <span>3</span>
+                </CartInfo>
             </div>
         </HeaderContainer>
     )

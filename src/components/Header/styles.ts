@@ -26,4 +26,19 @@ export const BoxInfo = styled.span`
 
 export const CartInfo = styled(BoxInfo)`
     background: ${props => props.theme.yellowLight};
+    position: relative;
+
+    span {
+        position: absolute;
+        display: flex;
+        width: 20px;
+        height: 20px;
+        right: -8.345px;
+        top: -8px;
+        align-items: center;
+        justify-content: center;
+        background: ${props => props.theme.yellowDark};
+        color: ${props => props.theme.yellowLight};
+        border-radius: 50%;
+    }
 `

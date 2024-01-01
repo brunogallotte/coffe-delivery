@@ -11,4 +11,10 @@ export const Button = styled.button`
     text-transform: uppercase;
     font-size: 0.75rem;
     gap: 0.75rem;
+    transition: .2s background;
+    cursor: pointer;
+
+    &:hover {
+        background: ${props => props.theme.baseHover};
+    }
 `

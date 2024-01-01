@@ -10,4 +10,9 @@ export const InputData = styled.input<InputDataProps>`
     background: ${props=> props.theme.baseInput};
     border: 1px solid ${props=> props.theme.baseButton};
     border-radius: 4px;
+
+    &:focus {
+        outline: 0;
+        border: 1px solid ${props => props.theme.yellowDark};
+    }
 `

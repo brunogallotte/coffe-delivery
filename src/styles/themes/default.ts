@@ -17,5 +17,6 @@ export const defaultTheme = {
     background: '#fafafa',
     baseCard: '#f3f2f2',
     baseInput: '#EDEDED',
-    baseButton: '#E6E5E5'
+    baseButton: '#E6E5E5',
+    brandPurple: '#8047F8'
 }

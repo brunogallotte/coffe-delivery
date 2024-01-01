@@ -7,7 +7,7 @@ interface ButtonSelectMethodPaymentProps {
 
 export function ButtonSelectMethodPayment({ icon, title }: ButtonSelectMethodPaymentProps) {
     return(
-        <Button>
+        <Button type="button">
             <img src={icon} />
             <span>{title}</span>
         </Button>

@@ -74,7 +74,12 @@ export const CartFooter = styled.footer`
         padding: 0.5rem;
         background: ${props=> props.theme.purpleDark};
         border-radius: 6px;
+        transition: .2s background;
         cursor: pointer;
+
+        &:hover {
+            background: ${props=> props.theme.brandPurple};
+        }
     }
 
     .wrapper {
