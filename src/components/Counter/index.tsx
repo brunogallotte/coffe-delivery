@@ -4,8 +4,8 @@ import { CounterContainer } from './styles'
 
 interface CounterProps {
     quantityCounter: number
-    handleAddQuantityCounter: () => void
-    handleLessQuantityCounter: () => void
+    handleAddQuantityCounter?: () => void
+    handleLessQuantityCounter?: () => void
 }
 
 export function Counter({ quantityCounter, handleAddQuantityCounter, handleLessQuantityCounter }: CounterProps) {

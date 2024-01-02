@@ -41,4 +41,10 @@ export const CartInfo = styled(BoxInfo)`
         color: ${props => props.theme.yellowLight};
         border-radius: 50%;
     }
+
+    a {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
 `

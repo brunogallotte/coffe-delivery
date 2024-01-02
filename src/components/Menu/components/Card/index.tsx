@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
 import { CartContainer, CartFooter } from './styles'
 
@@ -6,10 +6,14 @@ import cartIcon from '../../../../assets/icons/CartIcon2.svg'
 
 import { CoffeProps } from '../../../../@types/style'
 import { Counter } from '../../../Counter'
+import { CartContext } from '../../../../App'
+import { coffes } from '../../../../data/menuCoffe'
 
 
-export function Card({ imgUrl, tag, title, description, price }: CoffeProps){
+export function Card({ imgUrl, tag, title, description, price, id }: CoffeProps){
     const [quantityCounter, setQuantityCounter] = useState(0)
+
+    const { addToCart } = useContext(CartContext)
 
     function handleAddQuantityCounter() {
         const currentQuantity = quantityCounter
@@ -26,6 +30,12 @@ export function Card({ imgUrl, tag, title, description, price }: CoffeProps){
             setQuantityCounter(updatedQuantity)
         }
     }
+
+    function handleAddToCart() {
+        const currentProduct: CoffeProps | undefined = coffes.find(product => product.id === id);
+
+        addToCart(currentProduct, quantityCounter)
+    }
     
     return(
         <CartContainer>
@@ -41,7 +51,7 @@ export function Card({ imgUrl, tag, title, description, price }: CoffeProps){
                 <span className="price"><span className="reais">R$</span> {price}</span>
                 <div className="wrapper">
                     <Counter quantityCounter={quantityCounter} handleAddQuantityCounter={handleAddQuantityCounter} handleLessQuantityCounter={handleLessQuantityCounter}/>
-                    <img className="cartIcon" src={cartIcon} />
+                    <img className="cartIcon" src={cartIcon} onClick={handleAddToCart}/>
                 </div>
             </CartFooter>
         </CartContainer>

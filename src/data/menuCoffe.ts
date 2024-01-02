@@ -107,7 +107,7 @@ export const coffes: CoffeProps[] = [
         quantity: 0
     },
     {
-        id: 10,
+        id: 11,
         imgUrl: cubano,
         tag: ['especial', 'com leite', 'gelado'],
         title: 'Cubano',
@@ -116,7 +116,7 @@ export const coffes: CoffeProps[] = [
         quantity: 0
     },
     {
-        id: 10,
+        id: 12,
         imgUrl: havaiano,
         tag: ['especial'],
         title: 'Havaiano',
@@ -125,7 +125,7 @@ export const coffes: CoffeProps[] = [
         quantity: 0
     },
     {
-        id: 11,
+        id: 13,
         imgUrl: arabe,
         tag: ['especial'],
         title: 'Árabe',
@@ -134,7 +134,7 @@ export const coffes: CoffeProps[] = [
         quantity: 0
     },
     {
-        id: 12,
+        id: 14,
         imgUrl: irlandes,
         tag: ['especial', 'alcoólico'],
         title: 'Irlandês',

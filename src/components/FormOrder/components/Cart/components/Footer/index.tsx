@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import { ButtonConfirmOrder, FooterContainer, FooterValues } from "./styles";
+import { CartContext } from "../../../../../../App";
 
 
 export function Footer() {
+    const { totalAmount } = useContext(CartContext)
+
     return(
         <FooterContainer>
             <FooterValues>
                 <span>Total de itens</span>
-                <strong>R$ 29,70</strong>
+                <strong>R$ {totalAmount}</strong>
             </FooterValues>
             <FooterValues>
                 <span>Entrega</span>
@@ -14,7 +18,7 @@ export function Footer() {
             </FooterValues>
             <FooterValues>
                 <span className="totalValue">Total</span>
-                <strong className="totalValue">R$ 33,20</strong>
+                <strong className="totalValue">R$ {totalAmount + 3.50}</strong>
             </FooterValues>
             <ButtonConfirmOrder>Confirmar Pedido</ButtonConfirmOrder>
         </FooterContainer>
