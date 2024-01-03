@@ -80,21 +80,27 @@ function App() {
       }
 
       case 'INCREMENT_QUANTITY': {
-        const updatedCart = state.cart
-        const currentProductId = action.payload.productId
+        const productIdToIncrementQuantity = action.payload.productId
+        const productIndexToIncrementQuantity = state.cart.findIndex(product => product.id === productIdToIncrementQuantity)
 
-        const productIndexToIncrementQuantity = updatedCart.findIndex(product => product.id === currentProductId)
+        if (productIndexToIncrementQuantity !== -1) {
+          const updatedCart = [...state.cart]
 
-        const updatedProductQuantity = updatedCart[productIndexToIncrementQuantity].quantity + 1
+          const updatedProduct = { ...updatedCart[productIndexToIncrementQuantity] }
+          updatedProduct.quantity += 1
 
-        const changeStateQuantityCounter = action.payload.changeStateQuantityCounter
-        changeStateQuantityCounter(updatedProductQuantity)
+          updatedCart[productIndexToIncrementQuantity] = updatedProduct
+          const totalAmount = updatedCart.reduce((total, product) => total + (product.price * product.quantity), 0)
+
+          return {
+            ...state,
+            cart: updatedCart,
+            totalAmount: totalAmount
+          }
+        }
         
 
-        return {
-          ...state,
-          cart: updatedCart,
-        }
+        return state
       }
     }
 
@@ -131,6 +137,15 @@ function App() {
   function incrementQuantityOnProduct(productId: number) {
     dispatch({
       type: 'INCREMENT_QUANTITY',
+      payload: {
+        productId
+      }
+    })
+  }
+
+  function decrementQuantityOnProduct(productId: number) {
+    dispatch({
+      type: 'DECREMENT_QUANTITY',
       payload: {
         productId
       }
