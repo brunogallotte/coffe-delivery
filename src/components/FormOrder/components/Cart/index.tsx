@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CoffeSelectedCard } from "./components/CoffeSelectedCard";
 import { Footer } from "./components/Footer";
 import { CartContainer } from "./styles";
-import { CartContext } from "../../../../App";
+import { CartContext } from "../../../../contexts/CartContext";
 
 export function Cart() {
     const { cart } = useContext(CartContext)

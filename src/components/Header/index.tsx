@@ -4,7 +4,7 @@ import logoCoffe from '../../assets/images/LogoCoffe.svg'
 import iconMap from '../../assets/icons/IconMap.svg'
 import iconCart from '../../assets/icons/CartIcon.svg'
 import { useContext } from "react";
-import { CartContext } from "../../App";
+import { CartContext } from "../../contexts/CartContext";
 import { Link } from "react-router-dom";
 
 export function Header() {

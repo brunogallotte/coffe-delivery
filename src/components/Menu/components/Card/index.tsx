@@ -6,7 +6,7 @@ import cartIcon from '../../../../assets/icons/CartIcon2.svg'
 
 import { CoffeProps } from '../../../../@types/style'
 import { Counter } from '../../../Counter'
-import { CartContext } from '../../../../App'
+import { CartContext } from "../../../../contexts/CartContext";
 import { coffes } from '../../../../data/menuCoffe'
 
 

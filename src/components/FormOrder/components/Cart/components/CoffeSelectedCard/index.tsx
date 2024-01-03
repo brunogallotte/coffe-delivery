@@ -3,7 +3,7 @@ import { CoffeSelectedCardActions, CoffeSelectedCardContainer, RemoveButton } fr
 
 import trashIcon from '../../../../../../assets/icons/trash.svg'
 import { useContext } from 'react'
-import { CartContext } from '../../../../../../App'
+import { CartContext } from '../../../../../../contexts/CartContext'
 import { CoffeProps } from '../../../../../../@types/style'
 
 interface CoffeSelectedCardProps {
@@ -16,7 +16,7 @@ interface CoffeSelectedCardProps {
 
 export function CoffeSelectedCard({ imgUrl, title, price, id, quantity }: CoffeSelectedCardProps) {
 
-    const { cart, removeToCart, incrementQuantityOnProduct } = useContext(CartContext)
+    const { cart, removeToCart, incrementQuantityOnProduct, decrementQuantityOnProduct } = useContext(CartContext)
 
     function handleRemoveProductToCart() {
         removeToCart(id)
@@ -32,13 +32,23 @@ export function CoffeSelectedCard({ imgUrl, title, price, id, quantity }: CoffeS
         }
     }
 
+    function handleDecrementQuantity() {
+        const currentProduct: CoffeProps | undefined = cart?.find(product => {
+            return product.id === id
+        })
+
+        if (currentProduct) {
+            decrementQuantityOnProduct(currentProduct.id)
+        }
+    }
+
     return(
         <CoffeSelectedCardContainer>
             <img src={imgUrl} className="coffeImg" />
             <CoffeSelectedCardActions>
                 <span>{title}</span>
                 <div className="actionsBox">
-                    <Counter quantityCounter={quantity} handleAddQuantityCounter={handleIncrementQuantity}/>
+                    <Counter quantityCounter={quantity} handleAddQuantityCounter={handleIncrementQuantity} handleLessQuantityCounter={handleDecrementQuantity}/>
                     <RemoveButton onClick={handleRemoveProductToCart}><img src={trashIcon} />remover</RemoveButton>
                 </div>
             </CoffeSelectedCardActions>

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ButtonConfirmOrder, FooterContainer, FooterValues } from "./styles";
-import { CartContext } from "../../../../../../App";
+import { CartContext } from "../../../../../../contexts/CartContext";
 
 
 export function Footer() {
