@@ -21,7 +21,6 @@ export function Cart() {
                     />
                 )
             })}
-            
             <Footer />
         </CartContainer>
     )

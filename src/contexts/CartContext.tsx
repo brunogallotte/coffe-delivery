@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useReducer } from "react";
 import { CoffeProps } from "../@types/style";
+import { getTotalPrice } from "../utils";
 
 interface CartContextType {
     cart: CoffeProps[] | undefined
@@ -40,10 +41,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
               const updatedCart = [...state.cart];
               updatedCart[verifyIndexProductExistInCart].quantity = currentProduct.quantity > 0 ? currentProduct.quantity : state.cart[verifyIndexProductExistInCart].quantity;
               
-              const totalAmount = updatedCart.reduce(
-                (total, product) => total + product.price * product.quantity,
-                0
-              )
+              const totalAmount = getTotalPrice(updatedCart)
     
               return {
                 ...state,
@@ -52,7 +50,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
               };
             } else {
               const updatedCart = [...state.cart, action.payload.data];
-              const totalAmount = updatedCart.reduce((total, product) => total + (product.price * product.quantity), 0);
+              const totalAmount = getTotalPrice(updatedCart)
               
               return {
                 ...state,
@@ -68,7 +66,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
               return product.id != action.payload.productId
             })
     
-            const totalAmount = updatedCart.reduce((total, product) => total + (product.price * product.quantity), 0)
+            const totalAmount = getTotalPrice(updatedCart)
     
             return {
               ...state,
@@ -89,7 +87,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
               updatedProduct.quantity += 1
     
               updatedCart[productIndexToIncrementQuantity] = updatedProduct
-              const totalAmount = updatedCart.reduce((total, product) => total + (product.price * product.quantity), 0)
+
+              const totalAmount = getTotalPrice(updatedCart)
     
               return {
                 ...state,
@@ -114,7 +113,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
               updatedProduct.quantity -= 1
     
               updatedCart[productIndexToDecrementQuantity] = updatedProduct
-              const totalAmount = updatedCart.reduce((total, product) => total + (product.price * product.quantity), 0)
+              const totalAmount = getTotalPrice(updatedCart)
     
               return {
                 ...state,
