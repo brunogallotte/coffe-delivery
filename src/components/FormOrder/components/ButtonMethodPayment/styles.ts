@@ -1,6 +1,10 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
-export const Button = styled.button`
+interface ButtonProps {
+    isSelected: boolean;
+}
+
+export const Button = styled.div<ButtonProps>`
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -12,7 +16,16 @@ export const Button = styled.button`
     font-size: 0.75rem;
     gap: 0.75rem;
     transition: .2s background;
+    border: 1px solid transparent;
     cursor: pointer;
+
+    ${props =>
+        props.isSelected &&
+        css`
+            background: ${props => props.theme.purpleLight};
+            border: 1px solid ${props => props.theme.brandPurple};
+        `
+    }
 
     &:hover {
         background: ${props => props.theme.baseHover};

@@ -1,6 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
+import { useNavigate } from 'react-router-dom'
 
 import { FormContainer, FormControl, PaymentMethodContainer } from "./styles"
 import { FormMain } from "./components/FormMain"
@@ -13,9 +14,10 @@ import creditCard from '../../assets/icons/CreditCard.svg'
 import debitCard from '../../assets/icons/DebitCard.svg'
 import money from '../../assets/icons/Money.svg'
 import { Cart } from "../Cart"
+import { useState } from "react"
 
 const newFormOrderValidationSchema = zod.object({
-    cep: zod.string().length(8, 'Informe um CEP válido'),
+    cep: zod.string().length(9, 'Informe um CEP válido'),
     rua: zod.string().min(1, 'Informe a rua'),
     numero: zod.string().min(1, 'Informe um número'),
     complemento: zod.string().min(1, 'Informe o complemento'),
@@ -24,16 +26,26 @@ const newFormOrderValidationSchema = zod.object({
     uf: zod.string().length(2, 'Informe a União Federativa')
 })
 
+type newFormOrderData = zod.infer<typeof newFormOrderValidationSchema>
+
 export function FormOrder() {
-    const newOrderForm = useForm({
+    const [selectedMethodPayment, setselectedMethodPayment] = useState<string | null>()
+    const navigate = useNavigate()
+
+    const newOrderForm = useForm<newFormOrderData>({
         resolver: zodResolver(newFormOrderValidationSchema),
     })
 
-    function handleCreateNewOrder(data: any) {
-        console.log(data)
+    function handleMethodPayment(buttonTitle: string) {
+        setselectedMethodPayment(buttonTitle)
     }
 
-    console.log(newOrderForm.formState.errors)
+    function handleCreateNewOrder(data: object) {
+        console.log(data)
+        navigate('/success')
+    }
+
+    console.log(selectedMethodPayment)
 
     return(
     
@@ -49,9 +61,24 @@ export function FormOrder() {
                 <PaymentMethodContainer>
                     <FormHeader icon={iconMethodPayment} title="Pagamento" description="O pagamento é feito na entrega. Escolha a forma que deseja pagar" />
                     <div className="buttonsContainer">
-                        <ButtonSelectMethodPayment icon={creditCard} title="cartão de crédito"/>
-                        <ButtonSelectMethodPayment icon={debitCard} title="cartão de débito"/>
-                        <ButtonSelectMethodPayment icon={money} title="dinheiro"/>
+                        <ButtonSelectMethodPayment 
+                            icon={creditCard} 
+                            title="cartão de crédito"
+                            onSelect={() => handleMethodPayment('cartão de crédito')}
+                            isSelected={selectedMethodPayment === "cartão de crédito"}
+                        />
+                        <ButtonSelectMethodPayment 
+                            icon={debitCard} 
+                            title="cartão de débito"
+                            onSelect={() => handleMethodPayment('cartão de débito')}
+                            isSelected={selectedMethodPayment === "cartão de débito"}
+                        />
+                        <ButtonSelectMethodPayment 
+                            icon={money} 
+                            title="dinheiro"
+                            onSelect={() => handleMethodPayment('dinheiro')}
+                            isSelected={selectedMethodPayment === "dinheiro"}
+                        />
                     </div>
                 </PaymentMethodContainer>
             </div>
