@@ -1,10 +1,11 @@
-import { Counter } from '../../../../../Counter'
+import { Counter } from '../../../Counter'
 import { CoffeSelectedCardActions, CoffeSelectedCardContainer, RemoveButton } from './styles'
 
-import trashIcon from '../../../../../../assets/icons/trash.svg'
+import trashIcon from '../../../../assets/icons/trash.svg'
 import { useContext } from 'react'
-import { CartContext } from '../../../../../../contexts/CartContext'
-import { CoffeProps } from '../../../../../../@types/style'
+import { CartContext } from '../../../../contexts/CartContext'
+import { CoffeProps } from '../../../../@types/style'
+import { parseToBrl } from '../../../../utils'
 
 interface CoffeSelectedCardProps {
     imgUrl: string
@@ -52,7 +53,7 @@ export function CoffeSelectedCard({ imgUrl, title, price, id, quantity }: CoffeS
                     <RemoveButton onClick={handleRemoveProductToCart}><img src={trashIcon} />remover</RemoveButton>
                 </div>
             </CoffeSelectedCardActions>
-            <strong>R$ {price}0</strong>
+            <strong>{parseToBrl(price * quantity)}</strong>
         </CoffeSelectedCardContainer>
     )
 }

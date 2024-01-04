@@ -8,7 +8,7 @@ import iconMethodPayment from '../../assets/icons/IconMethodPayment.svg'
 import creditCard from '../../assets/icons/CreditCard.svg'
 import debitCard from '../../assets/icons/DebitCard.svg'
 import money from '../../assets/icons/Money.svg'
-import { Cart } from "./components/Cart"
+import { Cart } from "../Cart"
 
 
 

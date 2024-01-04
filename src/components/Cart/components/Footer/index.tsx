@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ButtonConfirmOrder, FooterContainer, FooterValues } from "./styles";
-import { CartContext } from "../../../../../../contexts/CartContext";
-import { parseToBrl } from "../../../../../../utils";
+import { CartContext } from "../../../../contexts/CartContext";
+import { parseToBrl } from "../../../../utils";
 
 
 export function Footer() {
