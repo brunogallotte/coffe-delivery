@@ -1,3 +1,7 @@
+import { FormProvider, useForm } from "react-hook-form"
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
+
 import { FormContainer, FormControl, PaymentMethodContainer } from "./styles"
 import { FormMain } from "./components/FormMain"
 import { FormHeader } from "./components/FormHeader"
@@ -10,16 +14,37 @@ import debitCard from '../../assets/icons/DebitCard.svg'
 import money from '../../assets/icons/Money.svg'
 import { Cart } from "../Cart"
 
-
+const newFormOrderValidationSchema = zod.object({
+    cep: zod.string().length(8, 'Informe um CEP válido'),
+    rua: zod.string().min(1, 'Informe a rua'),
+    numero: zod.string().min(1, 'Informe um número'),
+    complemento: zod.string().min(1, 'Informe o complemento'),
+    bairro: zod.string().min(1, 'Informe o bairro'),
+    cidade: zod.string().min(1, 'Informe a cidade'),
+    uf: zod.string().length(2, 'Informe a União Federativa')
+})
 
 export function FormOrder() {
+    const newOrderForm = useForm({
+        resolver: zodResolver(newFormOrderValidationSchema),
+    })
+
+    function handleCreateNewOrder(data: any) {
+        console.log(data)
+    }
+
+    console.log(newOrderForm.formState.errors)
+
     return(
-        <FormControl className="container">
+    
+        <FormControl onSubmit={newOrderForm.handleSubmit(handleCreateNewOrder)} className="container">
             <div className="wrapper">
                 <FormContainer>
                     <FormHeader icon={iconForm} title="Endereço de Entrega" description="Informe o endereço onde deseja receber seu pedido" />
 
-                    <FormMain />
+                    <FormProvider {...newOrderForm}>
+                        <FormMain />
+                    </FormProvider>
                 </FormContainer>
                 <PaymentMethodContainer>
                     <FormHeader icon={iconMethodPayment} title="Pagamento" description="O pagamento é feito na entrega. Escolha a forma que deseja pagar" />
@@ -32,5 +57,6 @@ export function FormOrder() {
             </div>
             <Cart />
         </FormControl>
+        
     )
 }
