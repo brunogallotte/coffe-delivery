@@ -47,4 +47,8 @@ export const ButtonConfirmOrder = styled.button`
     &:hover {
         background: ${props=> props.theme.yellowDark};
     }
+
+    &:disabled {
+        background: red;
+    }
 `

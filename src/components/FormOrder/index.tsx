@@ -1,4 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form"
+import { useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 import { useNavigate } from 'react-router-dom'
@@ -7,14 +8,13 @@ import { FormContainer, FormControl, PaymentMethodContainer } from "./styles"
 import { FormMain } from "./components/FormMain"
 import { FormHeader } from "./components/FormHeader"
 import { ButtonSelectMethodPayment } from "./components/ButtonMethodPayment"
+import { Cart } from "../Cart"
 
 import iconForm from '../../assets/icons/IconForm.svg'
 import iconMethodPayment from '../../assets/icons/IconMethodPayment.svg'
 import creditCard from '../../assets/icons/CreditCard.svg'
 import debitCard from '../../assets/icons/DebitCard.svg'
 import money from '../../assets/icons/Money.svg'
-import { Cart } from "../Cart"
-import { useState } from "react"
 
 const newFormOrderValidationSchema = zod.object({
     cep: zod.string().length(9, 'Informe um CEP válido'),
@@ -45,7 +45,7 @@ export function FormOrder() {
         navigate('/success')
     }
 
-    console.log(selectedMethodPayment)
+    // Adicionar validação para requirir a forma de pagamento selcionado, talvez desabiltiar o botao caso não esteja selecionada
 
     return(
     
@@ -82,7 +82,9 @@ export function FormOrder() {
                     </div>
                 </PaymentMethodContainer>
             </div>
-            <Cart />
+            <FormProvider {...newOrderForm}>
+                <Cart selectedMethodPayment={selectedMethodPayment}/>
+            </FormProvider>
         </FormControl>
         
     )
