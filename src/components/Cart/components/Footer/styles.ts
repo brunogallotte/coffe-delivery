@@ -49,6 +49,10 @@ export const ButtonConfirmOrder = styled.button`
     }
 
     &:disabled {
-        background: red;
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+    &:disabled:hover {
+        background: ${props => props.theme.yellowNormal};
     }
 `

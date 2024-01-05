@@ -2,7 +2,6 @@ import { FormProvider, useForm } from "react-hook-form"
 import { useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
-import { useNavigate } from 'react-router-dom'
 
 import { FormContainer, FormControl, PaymentMethodContainer } from "./styles"
 import { FormMain } from "./components/FormMain"
@@ -30,7 +29,7 @@ type newFormOrderData = zod.infer<typeof newFormOrderValidationSchema>
 
 export function FormOrder() {
     const [selectedMethodPayment, setselectedMethodPayment] = useState<string | null>()
-    const navigate = useNavigate()
+
 
     const newOrderForm = useForm<newFormOrderData>({
         resolver: zodResolver(newFormOrderValidationSchema),
@@ -40,12 +39,9 @@ export function FormOrder() {
         setselectedMethodPayment(buttonTitle)
     }
 
-    function handleCreateNewOrder(data: object) {
-        console.log(data)
-        navigate('/success')
+    function handleCreateNewOrder() {
+        console.log('fodase')
     }
-
-    // Adicionar validação para requirir a forma de pagamento selcionado, talvez desabiltiar o botao caso não esteja selecionada
 
     return(
     
@@ -83,7 +79,7 @@ export function FormOrder() {
                 </PaymentMethodContainer>
             </div>
             <FormProvider {...newOrderForm}>
-                <Cart selectedMethodPayment={selectedMethodPayment}/>
+                <Cart selectedMethodPayment={selectedMethodPayment} />
             </FormProvider>
         </FormControl>
         

@@ -1,16 +1,29 @@
-import { ReactNode, createContext, useReducer } from "react";
+import { ReactNode, createContext, useReducer, useState } from "react";
 import { CoffeProps } from "../@types/style";
 import { CartReducer } from "../reducers/reducer";
-import { ActionTypes, addToCartAction, decrementQuantityOnProductAction, incrementQuantityOnProductAction, removeToCartAction } from "../reducers/actions"
+import { addToCartAction, decrementQuantityOnProductAction, incrementQuantityOnProductAction, removeToCartAction } from "../reducers/actions"
+import { FieldValues } from "react-hook-form";
 
 interface CartContextType {
     cart: CoffeProps[] | undefined
     quantity: number
     totalAmount: number
+    orderState: OrderStateType
     addToCart: (product: CoffeProps | undefined, quantity: number) => void
     removeToCart: (productId: number) => void
     incrementQuantityOnProduct: (productId: number) => void
     decrementQuantityOnProduct: (productId: number) => void
+    changeOrderState: (order: OrderStateType | FieldValues) => void
+}
+
+interface OrderStateType {
+  cep: string
+  rua: string
+  cidade: string
+  numero: string
+  complemento: string
+  bairro: string
+  uf: string
 }
 
 interface CartState {
@@ -26,6 +39,15 @@ interface CartContextProviderProps {
 export const CartContext = createContext({} as CartContextType)
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
+    const [orderState, setOrderState] = useState<OrderStateType | FieldValues>({
+      cep: '',
+      rua: '',
+      cidade: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      uf: ''
+    })
     const [cartState, dispatch] = useReducer(CartReducer, {
         cart: [],
         totalAmount: 0,
@@ -51,9 +73,13 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       function decrementQuantityOnProduct(productId: number) {
         dispatch(decrementQuantityOnProductAction(productId))
       }
+
+      function changeOrderState(order: OrderStateType) {
+        setOrderState(order)
+      }
     
     return(
-        <CartContext.Provider value={{ cart, addToCart, quantity, removeToCart, totalAmount, incrementQuantityOnProduct, decrementQuantityOnProduct }}>
+        <CartContext.Provider value={{ cart, addToCart, quantity, removeToCart, totalAmount, incrementQuantityOnProduct, decrementQuantityOnProduct, changeOrderState, orderState }}>
             {children}
         </CartContext.Provider>
     )

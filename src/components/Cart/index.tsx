@@ -11,10 +11,7 @@ interface CartProps {
 
 export function Cart({ selectedMethodPayment }: CartProps) {
     const { cart } = useContext(CartContext)
-    const { formState, watch } = useFormContext()
-
-    // fazer um for e iterar os erros exibindo apenas o primeiro
-    // apagar componente toast que está separado
+    const { watch } = useFormContext()
 
     const cep = watch('cep')
     const rua = watch('rua')
@@ -38,7 +35,7 @@ export function Cart({ selectedMethodPayment }: CartProps) {
                     />
                 )
             })}
-            <Footer buttonSubmitIsDisabled={!buttonSubmitIsDisabled} selectedMethodPayment={selectedMethodPayment}/>
+            <Footer buttonSubmitIsDisabled={!buttonSubmitIsDisabled} selectedMethodPayment={selectedMethodPayment} />
         </CartContainer>
     )
 }

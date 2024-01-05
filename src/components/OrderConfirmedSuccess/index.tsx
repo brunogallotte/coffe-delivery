@@ -4,8 +4,14 @@ import localSucces from '../../assets/icons/LocalSuccess.png'
 import timerSuccess from '../../assets/icons/TimerSucces.png'
 import moneySuccess from '../../assets/icons/Money Success.png'
 import successImg from '../../assets/images/Confirmed.png'
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export function OrderConfirmed() {
+    const { orderState } = useContext(CartContext)
+
+    console.log(orderState)
+
     return(
         <OrderConfirmedContainer className="container">
             <OrderConfirmedContent>
@@ -16,7 +22,7 @@ export function OrderConfirmed() {
                 <BoxInfoOrder>
                     <ItemBoxInfoOrder>
                         <img src={localSucces} />
-                        <span>Entrega em <strong>Rua João Daniel Martinelli, 102</strong><br /> Farropos - Porto Alegre</span>
+                        <span>Entrega em <strong>{orderState.rua}, {orderState.numero}</strong><br /> {orderState.bairro} - {orderState.cidade}</span>
                     </ItemBoxInfoOrder>
                     <ItemBoxInfoOrder>
                         <img src={timerSuccess} />
