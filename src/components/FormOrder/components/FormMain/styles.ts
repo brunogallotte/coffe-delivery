@@ -12,7 +12,6 @@ export const FormContent = styled.main`
     }
 
     @media (max-width: ${breakpoints.desktop}) {
-        max-width: 100%;
 
         .inputContainer {
             flex-direction: column;
