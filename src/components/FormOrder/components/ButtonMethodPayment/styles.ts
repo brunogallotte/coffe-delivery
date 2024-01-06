@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 interface ButtonProps {
-    isSelected: boolean;
+    $isSelected: boolean;
 }
 
 export const Button = styled.div<ButtonProps>`
@@ -19,8 +19,8 @@ export const Button = styled.div<ButtonProps>`
     border: 1px solid transparent;
     cursor: pointer;
 
-    ${props =>
-        props.isSelected &&
+    ${({ $isSelected }) =>
+        $isSelected &&
         css`
             background: ${props => props.theme.purpleLight};
             border: 1px solid ${props => props.theme.brandPurple};

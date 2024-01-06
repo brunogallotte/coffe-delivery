@@ -9,7 +9,7 @@ interface ButtonSelectMethodPaymentProps {
 
 export function ButtonSelectMethodPayment({ icon, title, onSelect, isSelected }: ButtonSelectMethodPaymentProps) {
     return(
-        <Button onClick={onSelect} isSelected={isSelected}>
+        <Button onClick={onSelect} $isSelected={isSelected}>
             <img src={icon} />
             <span>{title}</span>
         </Button>

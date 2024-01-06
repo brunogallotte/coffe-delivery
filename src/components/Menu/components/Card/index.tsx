@@ -45,7 +45,7 @@ export function Card({ imgUrl, tag, title, description, price, id }: CoffeProps)
             <img className="coffeImg" src={imgUrl} />
             <div className="tagContainer">
                 {tag.map(tag => {
-                    return <span className="tag">{tag}</span>
+                    return <span key={tag} className="tag">{tag}</span>
                 })}
             </div>
             <strong className="title">{title}</strong>
