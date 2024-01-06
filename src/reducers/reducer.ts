@@ -1,5 +1,5 @@
 import { CoffeProps } from "../@types/style"
-import { getTotalPrice } from "../utils"
+import { getTotalPrice, notify, notifySuccess } from "../utils"
 import { ActionTypes } from "./actions"
 
 interface CartState {
@@ -35,10 +35,18 @@ export function CartReducer(state: CartState, action: Action) {
             ...state,
             cart: updatedCart,
             totalAmount: totalAmount,
-          };
+          }
+        } else if (currentProduct.quantity < 1) {
+          notify('Selecione um café')
+          
+          return {
+            ...state
+          }
         } else {
           const updatedCart = [...state.cart, action.payload.data];
           const totalAmount = getTotalPrice(updatedCart)
+
+          notifySuccess('Adicionado ao carrinho')
           
           return {
             ...state,

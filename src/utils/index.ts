@@ -27,3 +27,14 @@ export const notify = (message: string) => toast.error(message, {
   progress: undefined,
   theme: "light",
 })
+
+export const notifySuccess = (message: string) => toast.success(message, {
+  position: "bottom-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+})

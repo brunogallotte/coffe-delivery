@@ -8,9 +8,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 export function OrderConfirmed() {
-    const { orderState } = useContext(CartContext)
-
-    console.log(orderState)
+    const { orderState, selectedMethodPayment } = useContext(CartContext)
 
     return(
         <OrderConfirmedContainer className="container">
@@ -30,7 +28,7 @@ export function OrderConfirmed() {
                     </ItemBoxInfoOrder>
                     <ItemBoxInfoOrder>
                         <img src={moneySuccess} />
-                        <span>Pagamento na entrega <br/> <strong>Cartão de Crédito</strong></span>
+                        <span>Pagamento na entrega <br/> <strong>{selectedMethodPayment}</strong></span>
                     </ItemBoxInfoOrder>
                 </BoxInfoOrder>
             </OrderConfirmedContent>

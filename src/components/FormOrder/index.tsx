@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 
@@ -14,6 +14,7 @@ import iconMethodPayment from '../../assets/icons/IconMethodPayment.svg'
 import creditCard from '../../assets/icons/CreditCard.svg'
 import debitCard from '../../assets/icons/DebitCard.svg'
 import money from '../../assets/icons/Money.svg'
+import { CartContext } from "../../contexts/CartContext"
 
 const newFormOrderValidationSchema = zod.object({
     cep: zod.string().length(9, 'Informe um CEP válido'),
@@ -28,14 +29,16 @@ const newFormOrderValidationSchema = zod.object({
 type newFormOrderData = zod.infer<typeof newFormOrderValidationSchema>
 
 export function FormOrder() {
-    const [selectedMethodPayment, setselectedMethodPayment] = useState<string | null>()
+    const payment = useContext(CartContext)
+
+    const { changeSelectedMethodPayment, selectedMethodPayment } = payment
 
     const newOrderForm = useForm<newFormOrderData>({
         resolver: zodResolver(newFormOrderValidationSchema),
     })
 
     function handleMethodPayment(buttonTitle: string) {
-        setselectedMethodPayment(buttonTitle)
+        changeSelectedMethodPayment(buttonTitle)
     }
 
     return(
