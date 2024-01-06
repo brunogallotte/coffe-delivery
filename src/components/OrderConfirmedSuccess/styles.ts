@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { breakpoints } from "../../styles/global"
 
 export const OrderConfirmedContainer = styled.div`
     display: grid;
@@ -6,6 +7,17 @@ export const OrderConfirmedContainer = styled.div`
     align-items: end;
     padding-top: 5rem;
     gap: 6.375rem;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        grid-template-columns: 1fr;
+        align-items: center;
+        padding-top: 2em;
+        gap: 4rem;
+    }
+
+    .imgSuccess {
+        max-width: 100%;
+    }
 `
 
 export const OrderConfirmedContent = styled.div`

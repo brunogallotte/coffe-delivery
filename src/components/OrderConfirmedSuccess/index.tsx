@@ -32,7 +32,7 @@ export function OrderConfirmed() {
                     </ItemBoxInfoOrder>
                 </BoxInfoOrder>
             </OrderConfirmedContent>
-            <img src={successImg} />
+            <img className="imgSuccess" src={successImg} />
         </OrderConfirmedContainer>
     )
 }

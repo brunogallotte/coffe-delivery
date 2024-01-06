@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles/global'
 
 export const CartContainer = styled.div`
     display: flex;
@@ -7,6 +8,10 @@ export const CartContainer = styled.div`
     padding: 2.5rem;
     gap: 2rem;
     border-radius: 6px 44px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        margin-bottom: 2rem;
+    }
 `
 
 export const EmptyCart = styled.div`
