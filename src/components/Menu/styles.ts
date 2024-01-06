@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { breakpoints } from "../../styles/global"
 
 export const MenuContainer = styled.div`
     padding-bottom: 157px;
@@ -16,4 +17,8 @@ export const MenuGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        grid-template-columns: 1fr;
+    }
 `

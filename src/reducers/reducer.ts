@@ -37,7 +37,7 @@ export function CartReducer(state: CartState, action: Action) {
             totalAmount: totalAmount,
           }
         } else if (currentProduct.quantity < 1) {
-          notify('Selecione um café')
+          notify('Quantidade inválida')
           
           return {
             ...state

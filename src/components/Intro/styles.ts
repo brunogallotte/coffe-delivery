@@ -1,5 +1,6 @@
 import { styled } from 'styled-components'
 import backgroundIntro from '../../assets/images/backgroundIntro.png'
+import { breakpoints } from '../../styles/global'
 
 export const IntroContainer = styled.div`
     position: relative;
@@ -86,6 +87,23 @@ export const IntroContainer = styled.div`
         background: ${props => props.theme.purpleNormal};
         border-radius: 50%;
     }
+
+    @media (max-width: ${breakpoints.desktop}) {
+        flex-direction: column;
+        max-width: 100%;
+
+        .introImage {
+            display: none;
+        }
+
+        .wrapper {
+            margin-top: 2rem;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+        }
+    }
 `
 
 export const IntroContent = styled.div`
@@ -107,5 +125,11 @@ export const IntroContent = styled.div`
         font-family: 'Roboto', sans-serif;
         line-height: 130%;
         font-size: 1.25rem;
+    }
+
+    @media (max-width: ${breakpoints.desktop}) {
+        .title {
+            font-size: 2rem;
+        }
     }
 `

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { breakpoints } from "../../styles/global"
 
 export const FormControl = styled.form`
     display: grid;
@@ -10,6 +11,11 @@ export const FormControl = styled.form`
         flex-direction: column;
         gap: 0.75rem;
     }
+
+    @media (max-width: ${breakpoints.desktop}) {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
 `
 
 export const FormContainer = styled.div`
@@ -18,12 +24,22 @@ export const FormContainer = styled.div`
     padding: 2.5rem;
     gap: 2rem;
     border-radius: 6px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+        width: 100%;
+    }
 `
 
 export const PaymentMethodContainer = styled(FormContainer)`
     .buttonsContainer {
         display: flex;
         gap: 0.75rem;
+    }
+
+    @media (max-width: ${breakpoints.desktop}) {
+        .buttonsContainer {
+            flex-direction: column;
+        }
     }
 `
 
