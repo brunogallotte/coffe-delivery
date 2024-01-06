@@ -27,6 +27,7 @@ export const BoxInfo = styled.span`
 export const CartInfo = styled(BoxInfo)`
     background: ${props => props.theme.yellowLight};
     position: relative;
+    cursor: pointer;
 
     span {
         position: absolute;

@@ -30,7 +30,6 @@ type newFormOrderData = zod.infer<typeof newFormOrderValidationSchema>
 export function FormOrder() {
     const [selectedMethodPayment, setselectedMethodPayment] = useState<string | null>()
 
-
     const newOrderForm = useForm<newFormOrderData>({
         resolver: zodResolver(newFormOrderValidationSchema),
     })
@@ -39,13 +38,9 @@ export function FormOrder() {
         setselectedMethodPayment(buttonTitle)
     }
 
-    function handleCreateNewOrder() {
-        console.log('fodase')
-    }
-
     return(
     
-        <FormControl onSubmit={newOrderForm.handleSubmit(handleCreateNewOrder)} className="container">
+        <FormControl className="container">
             <div className="wrapper">
                 <FormContainer>
                     <FormHeader icon={iconForm} title="Endereço de Entrega" description="Informe o endereço onde deseja receber seu pedido" />

@@ -1,3 +1,4 @@
+import { toast } from "react-toastify"
 import { CoffeProps } from "../@types/style"
 
 export const parseToBrl = (amount = 0) => {
@@ -14,4 +15,15 @@ export const getTotalPrice = (items: CoffeProps[]) => {
       }
       return 0
     }, 0)
-  }
+}
+
+export const notify = (message: string) => toast.error(message, {
+  position: "bottom-right",
+  autoClose: 3000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+})

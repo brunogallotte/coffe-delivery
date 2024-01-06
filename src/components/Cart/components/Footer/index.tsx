@@ -3,8 +3,8 @@ import { useFormContext } from "react-hook-form";
 
 import { ButtonConfirmOrder, FooterContainer, FooterValues } from "./styles";
 import { CartContext } from "../../../../contexts/CartContext";
-import { parseToBrl } from "../../../../utils";
-import { ToastContainer, toast } from "react-toastify";
+import { notify, parseToBrl } from "../../../../utils";
+import { ToastContainer } from "react-toastify";
 
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
@@ -13,17 +13,6 @@ interface FooterProps {
     buttonSubmitIsDisabled: boolean
     selectedMethodPayment: string | undefined | null
 }
-
-const notify = (message: string) => toast.error(message, {
-    position: "bottom-right",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-})
 
 export function Footer({ buttonSubmitIsDisabled, selectedMethodPayment }: FooterProps) {
     const { totalAmount, changeOrderState } = useContext(CartContext)

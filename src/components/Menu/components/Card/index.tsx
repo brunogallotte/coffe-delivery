@@ -8,6 +8,7 @@ import { CoffeProps } from '../../../../@types/style'
 import { Counter } from '../../../Counter'
 import { CartContext } from "../../../../contexts/CartContext";
 import { coffes } from '../../../../data/menuCoffe'
+import { parseToBrl } from '../../../../utils'
 
 
 export function Card({ imgUrl, tag, title, description, price, id }: CoffeProps){
@@ -36,6 +37,8 @@ export function Card({ imgUrl, tag, title, description, price, id }: CoffeProps)
 
         addToCart(currentProduct, quantityCounter)
     }
+
+    const priceFormated = parseToBrl(price)
     
     return(
         <CartContainer>
@@ -48,7 +51,7 @@ export function Card({ imgUrl, tag, title, description, price, id }: CoffeProps)
             <strong className="title">{title}</strong>
             <p>{description}</p>
             <CartFooter>
-                <span className="price"><span className="reais">R$</span> {price}</span>
+                <span className="price"><span className="reais">R$</span>{priceFormated.slice(2)} </span>
                 <div className="wrapper">
                     <Counter quantityCounter={quantityCounter} handleAddQuantityCounter={handleAddQuantityCounter} handleLessQuantityCounter={handleLessQuantityCounter}/>
                     <img className="cartIcon" src={cartIcon} onClick={handleAddToCart}/>
