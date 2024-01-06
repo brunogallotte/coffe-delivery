@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../../../styles/global'
 
 interface InputDataProps {
     width?: string
@@ -14,5 +15,9 @@ export const InputData = styled.input<InputDataProps>`
     &:focus {
         outline: 0;
         border: 1px solid ${props => props.theme.yellowDark};
+    }
+
+    @media (max-width: ${breakpoints.desktop}) {
+        width: 100%;
     }
 `

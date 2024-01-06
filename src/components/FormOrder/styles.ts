@@ -14,7 +14,6 @@ export const FormControl = styled.form`
 
     @media (max-width: ${breakpoints.desktop}) {
         grid-template-columns: 1fr;
-        max-width: 100%;
     }
 `
 

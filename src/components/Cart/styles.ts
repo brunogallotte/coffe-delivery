@@ -24,7 +24,6 @@ export const EmptyCart = styled.div`
     a {
         color: ${props => props.theme.baseSubtitle};
         text-decoration: none;
-    }
-    
+    }  
 `
 
