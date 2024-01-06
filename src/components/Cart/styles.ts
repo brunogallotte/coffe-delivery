@@ -9,3 +9,22 @@ export const CartContainer = styled.div`
     border-radius: 6px 44px;
 `
 
+export const EmptyCart = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    strong {
+        color: ${props => props.theme.baseText};
+    }
+
+    a {
+        color: ${props => props.theme.baseSubtitle};
+        text-decoration: none;
+    }
+    
+`
+
