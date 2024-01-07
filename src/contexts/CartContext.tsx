@@ -64,6 +64,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         if (storedStateAsJSON) {
           return JSON.parse(storedStateAsJSON)
         }
+
+        return {
+          cart: [],  
+          totalAmount: 0,
+          quantity: 0,
+        };
       })
     
       const { cart, quantity, totalAmount } = cartState
