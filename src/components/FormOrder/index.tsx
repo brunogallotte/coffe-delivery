@@ -43,7 +43,7 @@ export function FormOrder() {
 
     return(
         
-        <FormControl>
+        <FormControl className="container">
             <div className="wrapper">
                 <FormContainer>
                     <FormHeader icon={iconForm} title="Endereço de Entrega" description="Informe o endereço onde deseja receber seu pedido" />
