@@ -13,8 +13,11 @@ export const FormControl = styled.form`
     }
 
     @media (max-width: ${breakpoints.desktop}) {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         padding-top: 2em;
+        max-width: 90%;
+        margin: 0 auto;
     }
 `
 

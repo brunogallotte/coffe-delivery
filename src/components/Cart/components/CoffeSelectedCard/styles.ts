@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../../../../styles/global";
 
 export const CoffeSelectedCardContainer = styled.div`
     display: flex;
@@ -11,6 +12,10 @@ export const CoffeSelectedCardContainer = styled.div`
     strong {
         margin-left: auto;
         color: ${props=> props.theme.baseText};
+
+        @media (max-width: ${breakpoints.desktop}) {
+            display: none;
+        }
     }
 
     .coffeImg {
