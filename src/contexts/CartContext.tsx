@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useReducer, useState } from "react";
+import { ReactNode, createContext, useEffect, useReducer, useState } from "react";
 import { CoffeProps } from "../@types/style";
 import { CartReducer } from "../reducers/reducer";
 import { addToCartAction, decrementQuantityOnProductAction, incrementQuantityOnProductAction, removeToCartAction } from "../reducers/actions"
@@ -58,9 +58,21 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         cart: [],
         totalAmount: 0,
         quantity: 0
-      } as CartState)
+      } as CartState, () => {
+        const storedStateAsJSON = localStorage.getItem('@coffe-delivery:cart-state-1.0.0')
+
+        if (storedStateAsJSON) {
+          return JSON.parse(storedStateAsJSON)
+        }
+      })
     
       const { cart, quantity, totalAmount } = cartState
+
+      useEffect(() => {
+        const stateJSON = JSON.stringify(cartState)
+
+        localStorage.setItem('@coffe-delivery:cart-state-1.0.0', stateJSON)
+      }, [cartState])
     
       function addToCart(product: CoffeProps | undefined, quantity: number) {
         if(product) {
